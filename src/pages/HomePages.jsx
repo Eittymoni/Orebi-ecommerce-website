@@ -1,10 +1,13 @@
 import React from 'react'
-import Header from '../components/Header'
+import Banner from '../components/Banner'
+import Sale from '../components/Sale'
+
 
 const HomePages = () => {
   return (
     <div>
-     
+     <Banner/>
+     <Sale/>
     </div>
   )
 }
