@@ -17,13 +17,12 @@ const Header = () => {
       <img src={Logo} alt="" />
      </div>
      <div className="  lg:hidden flex justify-end " onClick={ ()=> setShow(!show)}>
-     {show?  < ImCross className='z-10'/>: < FaBars className='z-10'/>}
-     
-    
-    
+     {show?  < ImCross className=' cursor-pointer z-10'/>: < FaBars className=' cursor-pointer z-10'/>}
      </div>
 
-     <div className={`block absolute left-0 top-[35px] z-10  lg:flex bg-white lg:static lg:w-3/4 lg:bg-transparent duration-300 ease-in-out justify-center ${ show ? " right-0 top-[35px] w-full": " hidden  "}`}>
+     <div className={`absolute left-0 top-[30px] z-10 w-full lg:flex bg-white lg:static lg:w-3/4 lg:bg-transparent duration-300 ease-in-out justify-center ${
+              show ? 'block' : 'hidden'
+            } lg:block`}>
     
      <ul className="flex flex-col lg:flex-row items-center lg:justify-end py-4 lg:py-0">
       <li className="px-[20px] py-2 lg:py-0 font-sans text-[14px]  text-[#767676] hover:text-black animate__animated animate__backInLeft lg:animate-none">Home</li>

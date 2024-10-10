@@ -21,6 +21,7 @@ const Banner = () => {
         slidesToShow: 1,
         slidesToScroll: 1,
         arrows:false,
+        
         appendDots: dots => (
           <div
             style={{
@@ -33,11 +34,11 @@ const Banner = () => {
               transform:"translateY(-50%)"
             }}
           >
-            <ul style={{ margin: "0px" }}> {dots} </ul>
+            <ul className='one' style={{ margin: "0px" }}> {dots} </ul>
           </div>
         ),
         customPaging: i => (
-          <div
+          <div  className='two'
             style={{
               width: "30px",
               color: "transparent",
@@ -50,7 +51,7 @@ const Banner = () => {
         )
       };
   return (
-    <section  className='border-b-[1px] border-[#D8D8D8]'>
+    <section  className='border-b-[1px] border-[#D8D8D8] '>
         <Slider {...settings}>
 
         <div className="">
@@ -65,14 +66,11 @@ const Banner = () => {
         <Link to="/shop"> <img src={BanImg} alt="" /></Link>
 
         </div>
-        <div className="">
-        <Link to="/shop"> <img src={BanImg} alt="" /></Link>
-
-        </div>
+       
         
         </Slider>
         <Container>
-                <Flex className="justify-between pb-4 items-center">
+                <Flex className="justify-between pb-4 items-center lg:py-0 py-2">
                     <div className=" flex items-center">
                         <div className=" ">
                             <span className='font-dm text-[#262626] font-bold lg:text-[24px]   text-[12px] pr-2'>2</span> 

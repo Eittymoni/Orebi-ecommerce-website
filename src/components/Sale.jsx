@@ -10,18 +10,18 @@ const Sale = () => {
   return (
  <section className='py-10'>
   <Container>
-  <Flex className="justify-between">
-            <div className="w-[49%] ">
+  <Flex className="justify-between flex-col md:flex-row">
+            <div className=" w-full md:w-[49%] mb-4 md:mb-0">
                 <div className="">
-                  <Link to="/shop">  <img src={Sale1Img} alt="sale" /></Link>
+                  <Link to="/shop">  <img src={Sale1Img} alt="sale"  className='w-full h-auto'/></Link>
                 </div>
             </div>
-            <div className="w-[49%] ">
+            <div className="md:w-[49%] h-full ">
                 <div className="">
-                <Link to="/shop">  <img src={Sale2Img} alt="sale" /></Link>
+                <Link to="/shop">  <img src={Sale2Img} alt="sale" className='w-full h-auto' /></Link>
                 </div>
                 <div className=" lg:pt-10  pt-3">
-                <Link to="/shop">  <img src={Sale3Img} alt="sale" /></Link>
+                <Link to="/shop">  <img src={Sale3Img} alt="sale" className='w-full h-auto' /></Link>
                 </div>
             </div>
         </Flex>
