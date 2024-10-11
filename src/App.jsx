@@ -2,6 +2,7 @@ import { createBrowserRouter , createRoutesFromElements, RouterProvider, Route} 
 import HomePages from "./pages/HomePages"
 import Layout from "./components/Layout"
 import Shop from "./pages/Shop"
+import ProductDetails from "./pages/ProductDetails"
 
 function App() {
  let router = createBrowserRouter(createRoutesFromElements(
@@ -11,6 +12,8 @@ function App() {
     </Route>
     <Route path="/shop" element={<Shop/>}>
 
+    </Route>
+    <Route path="/shop/:id" element={<ProductDetails/>}>  
     </Route>
   </Route>
  ))

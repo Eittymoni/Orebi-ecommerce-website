@@ -5,7 +5,7 @@ import Container from "./Container";
 
 const Footer = () => {
   return (
-    <section className="bg-[#F5F5F3] py-10 sm:py-20">
+    <section className="bg-[#F5F5F3] lg:mt-10  py-10 sm:py-20">
     <Container className="overflow-hidden ">
       <div className="flex flex-col lg:flex-row justify-between lg:text-left text-center ">
        

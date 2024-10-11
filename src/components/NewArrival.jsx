@@ -70,7 +70,7 @@ const NewArrival = () => {
         </h2>
         {loading ?
         (
-        <h2> loding.....</h2>)
+        <h2> Loading.....</h2>)
          : (
         <Slider  {...settings}>
         {info.map((item) =>(

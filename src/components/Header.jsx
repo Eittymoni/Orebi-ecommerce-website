@@ -6,6 +6,7 @@ import { FaBars } from "react-icons/fa";
 
 import { ImCross } from "react-icons/im";
 import 'animate.css';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   let [show, setShow] = useState(false)
@@ -25,8 +26,11 @@ const Header = () => {
             } lg:block`}>
     
      <ul className="flex flex-col lg:flex-row items-center lg:justify-end py-4 lg:py-0">
-      <li className="lg:px-[20px] py-2 lg:py-0 font-sans text-[16px]  text-[#767676] hover:text-black animate__animated animate__backInLeft lg:animate-none">Home</li>
-      <li className="lg:px-[20px] py-2 lg:py-0 font-sans text-[16px]  text-[#767676] animate__animated animate__backInLeft hover:text-black lg:animate-none">Shop</li>
+      <li className="lg:px-[20px] py-2 lg:py-0 font-sans text-[16px]  text-[#767676] hover:text-black animate__animated animate__backInLeft lg:animate-none">
+        <Link to="/"> Home</Link>
+    </li>
+      <li className="lg:px-[20px] py-2 lg:py-0 font-sans text-[16px]  text-[#767676] animate__animated animate__backInLeft hover:text-black lg:animate-none">
+      <Link to="/shop"> Shop</Link></li>
       <li className="lg:px-[20px] py-2 lg:py-0 font-sans text-[16px]  text-[#767676] animate__animated animate__backInLeft hover:text-black lg:animate-none">About</li>
       <li className="lg:px-[20px] py-2 lg:py-0 font-sans text-[16px]  text-[#767676] animate__animated animate__backInLeft hover:text-black lg:animate-none">Contact</li>
       <li className="lg:px-[20px] py-2 lg:py-0 font-sans text-[16px]  text-[#767676] animate__animated animate__backInLeft hover:text-black lg:animate-none">Journals</li>
