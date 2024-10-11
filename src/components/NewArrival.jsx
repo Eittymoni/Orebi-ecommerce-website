@@ -33,7 +33,7 @@ function SamplePrevArrow(props) {
 }
 
 const NewArrival = () => {
-  let data = useContext(ApiData)
+  let {info,loading} = useContext(ApiData)
   const settings = {
     infinite: true,
     autoplay: true,
@@ -42,16 +42,38 @@ const NewArrival = () => {
     slidesToScroll: 1,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        }
+      },
+      {
+        breakpoint: 640,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        }
+      }
+    ]
   };
+
+ 
 
   return (
     <section>
         <Container>
-        <h2 className="text-[#262626] font-bold text-[39px] font-sans">
+        <h2 className="text-[#262626] font-bold lg:text-[39px]  sm:text-[20px] font-sans">
           New Arrivals
         </h2>
+        {loading ?
+        (
+        <h2> loding.....</h2>)
+         : (
         <Slider  {...settings}>
-        {data.map((item) =>(
+        {info.map((item) =>(
 
 <Link to="/shop">
 
@@ -62,7 +84,7 @@ const NewArrival = () => {
         </Slider>
  
           
-       
+)}
            
             
         </Container>

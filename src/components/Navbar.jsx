@@ -41,14 +41,14 @@ const Navbar = () => {
   }, [isCateNav, isAcc, card]);
 
   return (
-    <section className='bg-[#F5F5F3] lg:py-6 py-3 border-[1px] border-[#D8D8D8]'>
+    <section className='bg-[#F5F5F3] lg:py-6 py-5 '>
       <Container>
         <Flex className="items-center justify-between flex-wrap">
           <div className=" lg:w-1/4  w-full relative">
             <div ref={cateRef} className=" flex items-center gap-x-2 cursor-pointer">
 
               <CgMenuLeftAlt />
-              <h3 className='px-3 font-sans lg:text-[14px] text-[12px] text-[#262626] '>Shop by Category</h3>
+              <h3 className='px-3 font-sans lg:text-[16px] text-[14px] text-[#262626] '>Shop by Category</h3>
             </div>
             {isCateNav && (
 
@@ -65,7 +65,7 @@ const Navbar = () => {
             )}
           </div>
 
-          <div className=" lg:w-1/2 w-full">
+          <div className=" lg:w-1/2 w-full py-4 lg:py-0">
             <div className=" relative">
               <input type="search" placeholder="Search Products..." className="w-full lg:py-[16px] py-[10px] px-[20px] outline-none border-none lg:text-[16px] md:text-[16px] text-[12px] font-normal font-sans " />
               <IoSearch className=' absolute top-[50%]  translate-y-[-50%] right-4' />
@@ -106,10 +106,16 @@ const Navbar = () => {
                   </div>
                   <div className=" p-[20px]">
                     <h1 className=' text-[#767676] font-sans font-normal text-[16px] pb-2'>Subtotal: <span className='font-sans text-[#262626] font-bold'>$44.00</span></h1>
-                    <div className=" flex justify-between items-center gap-2">
-                      <div className="  w-[50%] py-[16px] px-[40px] border-2 border-[#262626]  bg-white font-bold text-center font-sans text-[#262626] hover:bg-[#262626] hover:text-white hover:border-0">View Cart </div>
-                      <div className="  w-[50%] py-[16px] px-[40px] border-2 border-[#262626]  bg-white font-bold text-center font-sans text-[#262626] hover:bg-[#262626] hover:text-white hover:border-0">Checkout </div>
+                    
+                    <div className="flex flex-wrap md:flex-nowrap my-5">
+                      <button className="px-[20px] md:px-[40px] py-[12px] md:py-[16px] text-[10px] md:text-[12px] font-bold border-2 border-[#000] me-3 hover:bg-black hover:text-white duration-300">
+                        View Cart
+                      </button>
+                      <button className="px-[20px] md:px-[40px] py-[12px] md:py-[16px] text-[10px] md:text-[12px] font-bold border-2 border-[#000] me-3 hover:bg-black hover:text-white duration-300">
+                        Check Out
+                      </button>
                     </div>
+
                   </div>
                 </div>
               )}

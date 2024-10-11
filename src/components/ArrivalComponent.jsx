@@ -13,7 +13,7 @@ const ArrivalComponent = ({item}) => {
 
 
   return (
-    <div className='!w-[97%] mx-3'>
+    <div className='lg:!w-[97%]  lg:mx-3 w-full'>
     <div className="">
         <div className="">
             <div className="relative group overflow-hidden">
