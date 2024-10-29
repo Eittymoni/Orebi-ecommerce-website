@@ -61,7 +61,7 @@ const ProductDetails = () => {
         </div>
         <div className="">
           <h2>Price</h2>
-           <del className="font-semibold"> {singleProduct.price}</del><span className="font-bold"> {newPrice.toFixed(2)}</span>
+           <del className="font-semibold"> ${singleProduct.price}</del><span className="font-bold"> ${newPrice.toFixed(2)}</span>
         </div>
         <h3>STATUS: {singleProduct.stock}</h3>
         <div className="flex flex-wrap md:flex-nowrap my-5">
