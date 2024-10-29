@@ -20,7 +20,7 @@ const Post = () => {
       <div className=" lg:w-[32%] w-[93%] md:w-[47%]">
         <div className="">
           <div className="relative group overflow-hidden">
-            <Link to={`/shop/ ${item.id}`}>
+            <Link to={`/shop/${item.id}`}>
               <img className="w-full" src={item.thumbnail} alt="" />
             </Link>
             <ul className="bg-white absolute left-0 h-[130px] duration-300 ease-in-out bottom-[-120px] w-full group-hover:bottom-[0px] py-2 text-end pr-4">
