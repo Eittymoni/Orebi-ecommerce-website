@@ -6,18 +6,22 @@ import { FaCartPlus } from "react-icons/fa"
 import { ApiData } from "./ContextApi";
 import { Link } from "react-router-dom";
 
-const Post = () => {
+const Post = ({allPage, activeGrid}) => {
     let { info, loading } = useContext(ApiData);
+   
+
   return (
     
-    <>
-     {loading?
+ 
+    <div className={`${activeGrid == "active" ? "w-[100%] " : "flex flex-wrap"}`}> 
+    {loading?
         (
         <h2> Loading.....</h2>)
          : ( <>
-    {info.map((item) => (
+          
+    {allPage.map((item) => (
        
-      <div className=" lg:w-[32%] w-[93%] md:w-[47%]">
+      <div className=" lg:w-[32%] w-[75%] md:w-[47%]">
         <div className="">
           <div className="relative group overflow-hidden">
             <Link to={`/shop/${item.id}`}>
@@ -52,10 +56,17 @@ const Post = () => {
         </div>
       </div>
     ))}
+
+
+
     </>
 
 )}
-  </>
+
+      
+       </div>
+   
+
 
   )
 }

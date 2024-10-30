@@ -13,7 +13,7 @@ const ProductDetails = () => {
     let productId = useParams()
     let [show, setShow] = useState(false);
     let [singleProduct, setSingleProduct] = useState({});
-    console.log(productId.id);
+  
   
     let getSingleProduct = () => {
       axios
