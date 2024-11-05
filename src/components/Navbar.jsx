@@ -41,7 +41,7 @@ const Navbar = () => {
   }, [isCateNav, isAcc, card]);
 
   return (
-    <section className='bg-[#F5F5F3] lg:py-6 py-5 '>
+    <section className='bg-[#F5F5F3] lg:py-6 py-5  px-10'>
       <Container>
         <Flex className="items-center justify-between flex-wrap">
           <div className=" lg:w-1/4  w-full relative">
@@ -65,7 +65,7 @@ const Navbar = () => {
             )}
           </div>
 
-          <div className=" lg:w-1/2 w-full py-4 lg:py-0">
+          <div className=" lg:w-1/2 w-full py-4 lg:py-0 ">
             <div className=" relative">
               <input type="search" placeholder="Search Products..." className="w-full lg:py-[16px] py-[10px] px-[20px] outline-none border-none lg:text-[16px] md:text-[16px] text-[12px] font-normal font-sans " />
               <IoSearch className=' absolute top-[50%]  translate-y-[-50%] right-4' />
