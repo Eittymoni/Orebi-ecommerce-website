@@ -35,9 +35,9 @@ const Post = ({allPage, activeGrid,categoryFilter}) => {
 <>
 <div className={`${activeGrid == "active" ? "w-full " : "flex flex-wrap"}`}>
             {filterShow.map((item) => (
-              <div className="lg:w-[32%] w-[75%] md:w-[47%] ">
+              <div className="lg:w-[30%] w-[75%] md:w-[47%] mr-2">
                 <div className="">
-                  <div className="relative group overflow-hidden">
+                  <div className="relative group overflow-hidden ">
                     <Link to={`/shop/${item.id}`}>
                       <img className="w-full" src={item.thumbnail} alt="" />
                     </Link>

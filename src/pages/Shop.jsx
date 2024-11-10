@@ -12,6 +12,7 @@ import { IoGrid } from "react-icons/io5";
 const Shop = () => {
   let {info,loading} = useContext(ApiData)
   let [show, setShow] = useState(false);
+  let [priceShow, setPriceShow] = useState(false);
   let [currentPage, setCurrentPage] = useState(1);
   let [perPage, setPerPage] = useState(6);
   let [activeGrid, setActiveGrid] = useState("");
@@ -58,6 +59,9 @@ const Shop = () => {
   let handleChange = (e) => {
     setPerPage(e.target.value);
   };
+  let handleAll = () => {
+    setCategoryFilter("");
+  };
 
 
   return (
@@ -78,14 +82,49 @@ const Shop = () => {
             </div>
             {show && (
               <ul>
+                 <li
+                      onClick={ handleAll}
+                      className="capitalize text-[#262626] font-sans py-1 cursor-pointer"
+                    >
+                      All Product
+                    </li>
                   {category.map((item) => (
                     <li
                       onClick={() => handleCategory(item)}
-                      className="capitalize text-[#262626] font-sans py-1"
+                      className="capitalize text-[#262626] font-sans py-1 cursor-pointer"
                     >
                       {item}
                     </li>
                   ))}
+              </ul>
+            )}
+          </div>
+          <div className="pr-6 pt-8">
+            <div
+              className="flex justify-between items-center"
+              onClick={() => setPriceShow(!priceShow)}
+            >
+              <h2 className="text-[#262626] font-bold lg:text-[20px] text-[14px] font-sans">
+                Shop by Price
+              </h2>
+
+              {priceShow ? <FaMinus /> : <FaPlus />}
+            </div>
+            {priceShow && (
+              <ul>
+                 <li
+                      onClick={ handleAll}
+                      className="capitalize text-[#262626] font-sans py-1 cursor-pointer"
+                    >
+                      All Product
+                    </li>
+                 <li
+              
+                      className="capitalize text-[#262626] font-sans py-1 cursor-pointer"
+                    >
+                      0$-10$
+                    </li>
+                 
               </ul>
             )}
           </div>

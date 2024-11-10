@@ -31,8 +31,8 @@ const Header = () => {
     </li>
       <li className="lg:px-[20px] py-2 lg:py-0 font-sans text-[16px]  text-[#767676] animate__animated animate__backInLeft hover:text-black lg:animate-none">
       <Link to="/shop"> Shop</Link></li>
-      <li className="lg:px-[20px] py-2 lg:py-0 font-sans text-[16px]  text-[#767676] animate__animated animate__backInLeft hover:text-black lg:animate-none">About</li>
-      <li className="lg:px-[20px] py-2 lg:py-0 font-sans text-[16px]  text-[#767676] animate__animated animate__backInLeft hover:text-black lg:animate-none">Contact</li>
+      <li className="lg:px-[20px] py-2 lg:py-0 font-sans text-[16px]  text-[#767676] animate__animated animate__backInLeft hover:text-black lg:animate-none"><Link to="/about"> About </Link></li>
+      <li className="lg:px-[20px] py-2 lg:py-0 font-sans text-[16px]  text-[#767676] animate__animated animate__backInLeft hover:text-black lg:animate-none"> <Link to="/contact"> Contact </Link></li>
       <li className="lg:px-[20px] py-2 lg:py-0 font-sans text-[16px]  text-[#767676] animate__animated animate__backInLeft hover:text-black lg:animate-none">Journals</li>
       </ul>
       
