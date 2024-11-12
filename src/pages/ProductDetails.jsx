@@ -9,11 +9,14 @@ import { Link } from "react-router-dom";
 import{ Rate }from"antd";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useDispatch } from "react-redux";
+import { addToCart } from "../components/slice/ProductSlice";
 
 
 const ProductDetails = () => {
     let productId = useParams()
     let navigate = useNavigate()
+    let dispatch = useDispatch()
     let [show, setShow] = useState(false);
     let [singleProduct, setSingleProduct] = useState({});
   
@@ -41,7 +44,7 @@ const ProductDetails = () => {
 
     let newPrice = singleProduct.price - discount
 
-    let handleCart = () => {
+    let handleCart = (item) => {
       dispatch(addToCart({...item, qun: 1}))
       toast("WelCome to Cart Page");
       setTimeout(()=>{
