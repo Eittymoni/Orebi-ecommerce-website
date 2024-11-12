@@ -42,7 +42,7 @@ const ProductDetails = () => {
     let newPrice = singleProduct.price - discount
 
     let handleCart = () => {
-      // dispatch(addToCart({...item, qun: 1}))
+      dispatch(addToCart({...item, qun: 1}))
       toast("WelCome to Cart Page");
       setTimeout(()=>{
        navigate("/cart")

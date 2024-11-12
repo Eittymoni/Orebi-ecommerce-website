@@ -30,9 +30,10 @@ const Post = ({ allPage, activeGrid, categoryFilter, showPrice, brandCategory })
   return (
 
     <>
+
      {brandCategory.length > 0 ? 
      <>
-     <div className="flex justify-between flex-wrap">
+     <div className={`${activeGrid == "active" ? "w-full " : "flex flex-wrap"}`}>
     {brandCategory.map((item) => (
   <div className="lg:w-[30%] w-[75%] md:w-[47%] mr-2">
 
@@ -68,26 +69,10 @@ const Post = ({ allPage, activeGrid, categoryFilter, showPrice, brandCategory })
         ${item.price}
       </p>
     </div>
-
   </div>
   
 ))}
 </div>
-
-<div className=" lg:py-5">
-{count
-  ? categoryFilter.length > 5 && (
-    <div onClick={handleSee} className="">
-      <button className="px-[20px] md:px-[40px] py-[12px] md:py-[16px] text-[14px] font-bold border-2 border-[#000] me-3 hover:bg-black hover:text-white duration-300"> See More</button>
-    </div>
-  )
-  : categoryFilter.length > 5 && (
-    <div onClick={handleSeeless} className="">
-      <button className="px-[20px] md:px-[40px] py-[12px] md:py-[16px] text-[14px] font-bold border-2 border-[#000] me-3 hover:bg-black hover:text-white duration-300"> See Less</button>
-    </div>
-  )}
-</div>
-   
 
    </>
      :

@@ -13,15 +13,16 @@ const Shop = () => {
   let { info, loading } = useContext(ApiData)
   let [show, setShow] = useState(false);
   let [catPrice, setCatPrice] = useState(false);
+  let [brandShow, setBrandShow] = useState(false);
   let [currentPage, setCurrentPage] = useState(1);
   let [perPage, setPerPage] = useState(6);
   let [activeGrid, setActiveGrid] = useState("");
   let [category, setCategory] = useState([]);
+  let [brand, setBrand] = useState([]);
   let [categoryFilter, setCategoryFilter] = useState([]);
   let [showPrice, setShowPrice] = useState([])
   let [lowPrice, setLowPrice] = useState([])
   let [highPrice, setHighPrice] = useState([])
-  let [brandShow, setBrandShow] = useState(false)
   let [brandCategory, setBrandCategory] = useState([])
   let lastPage = currentPage * perPage;
   let firstPage = lastPage - perPage;
@@ -54,7 +55,7 @@ const Shop = () => {
   };
   useEffect(() => {
     setCategory([...new Set(info.map((item) => item.category))]);
-    setBrandShow([...new Set(info.map((item)=> item.brand))])
+    setBrand([...new Set(info.map((item)=> item.brand))])
   }, [info]);
 
 
@@ -81,7 +82,8 @@ const Shop = () => {
       setCategoryFilter("")
     }
   }
-
+ console.log(handlePrice);
+ 
   let handleBrand = (bitem) =>{
     let brandFilter = info.filter((item)=> item.brand == bitem) 
     setCategoryFilter(brandFilter)
@@ -139,7 +141,7 @@ const Shop = () => {
               </div>
               {brandShow && (
                 <ul>
-                {brandShow.map((item)=>(
+                {brand.map((item)=>(
                 <li onClick={()=>handleBrand(item)} className="font-sans text-[18px] font-normal capitalize">{item}</li>
                 ))}
                 </ul>
@@ -168,14 +170,16 @@ const Shop = () => {
                     className="capitalize text-[#262626] font-sans py-1 cursor-pointer">
                     10.00$ - 19.00$
                   </li>
-                  <li onClick={() => handlePrice({ low: 20, high: 29 })}
+                  <li 
+                   onClick={() => handlePrice({ low: 20, high: 29 })} 
                     className="capitalize text-[#262626] font-sans py-1 cursor-pointer"  >
                   20.00$ - 29.00$  
                   </li>
+                 
                   <li onClick={() =>
-                    handlePrice({ low: 30, high: 39 })}
+                    handlePrice({ low: 50, high: 200 })}
                     className="capitalize text-[#262626] font-sans py-1 cursor-pointer"  >
-                    30.00$ - 39.00$
+                    50.00$ - 200.00$
                   </li>
 
                 </ul>
