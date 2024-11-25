@@ -9,13 +9,24 @@ import { IoCaretDown } from "react-icons/io5";
 import { FaShoppingCart } from "react-icons/fa";
 
 import { ImCross } from "react-icons/im";
+import { useDispatch, useSelector } from 'react-redux';
+import { RxCross2 } from 'react-icons/rx';
+import { useNavigate } from 'react-router-dom';
+import { removeProduct } from './slice/ProductSlice';
 
 
 
 const Navbar = () => {
+  let data = useSelector ((state)=> state.product.cartItem)
+
+  let dispatch = useDispatch()
+  let navigate = useNavigate()
+ 
+  
   let cateRef = useRef();
   let accRef = useRef();
   let cardRef = useRef();
+  let showCartRef = useRef()
 
   let [isCateNav, setisCateNav] = useState(false);
   let [isAcc, setisAcc] = useState(false);
@@ -37,8 +48,28 @@ const Navbar = () => {
       } else {
         setCard(false);
       }
+     
+      if(showCartRef.current.contains(e.target)){
+        setCard(true)
+      }
+
     });
   }, [isCateNav, isAcc, card]);
+
+
+
+  let handleCartPage = () =>{
+    
+    navigate("/cart")
+    setCard(false)
+  }
+
+  let handleCheckout = ()=>{
+    navigate("/checkout")
+    
+    setCard(false)
+  }
+
 
   return (
     <section className='bg-[#F5F5F3] lg:py-6 py-5  px-10'>
@@ -93,32 +124,62 @@ const Navbar = () => {
                 </div>
               )}
 
-              <div ref={cardRef} className=" relative">  <FaShoppingCart /></div>
-
-              {card && (
-                <div className=" w-[360px] bg-white absolute z-[1]  top-[20px] right-[5px]">
-                  <div className=" flex  justify-between  items-center p-[20px] gap-1 bg-[#F5F5F3]">
-                    <div className=" w-[25%] h-[50px] bg-[#979797]"></div>
-                    <div className="w-[68%]  pl-4"> <h2 className='font-sans text-[14px] text-[#262626] font-bold '> Black Smart Watch</h2>
-                      <h2 className='font-sans text-[14px] text-[#262626] font-bold '> $44.00</h2>
-                    </div>
-                    <div className=" w-[5%]"> <ImCross /></div>
-                  </div>
-                  <div className=" p-[20px]">
-                    <h1 className=' text-[#767676] font-sans font-normal text-[16px] pb-2'>Subtotal: <span className='font-sans text-[#262626] font-bold'>$44.00</span></h1>
-                    
-                    <div className="flex flex-wrap md:flex-nowrap my-5">
-                      <button className="px-[20px] md:px-[40px] py-[12px] md:py-[16px] text-[10px] md:text-[12px] font-bold border-2 border-[#000] me-3 hover:bg-black hover:text-white duration-300">
-                        View Cart
-                      </button>
-                      <button className="px-[20px] md:px-[40px] py-[12px] md:py-[16px] text-[10px] md:text-[12px] font-bold border-2 border-[#000] me-3 hover:bg-black hover:text-white duration-300">
-                        Check Out
-                      </button>
-                    </div>
-
-                  </div>
+              <div ref={cardRef} className=" relative cursor-pointer"> 
+                
+                {data.length > 0 &&
+                <div className="absolute left-[6px] top-[-12px] h-[15px] w-[15px] bg-[white] rounded-full text-black text-center leading-[15px] text-[12px]">
+                {data.length}
                 </div>
+                }
+                 <FaShoppingCart />
+                 </div>
+<div className="" ref={showCartRef}>
+{card && (
+                       <div className="absolute right-0 top-full mt-2 w-full md:w-[360px] bg-[rgba(233,230,230,0.9)] z-[1]">
+                       {data.map((item, i)=>(
+                       <div className="">
+                       <div className="flex items-center bg-white py-4 px-5">
+                         <div>
+                           <img
+                             className="w-[80px] md:w-[150px]"
+                             src={item.thumbnail}
+                             alt="Cart item"
+                           />
+                         </div>
+                         <div className="flex-grow">
+                           <div className="font-DM font-bold text-[14px] ml-3">
+                             <h3>{item.title}</h3>
+                           </div>
+                           <div className="font-DM font-bold text-[14px] ml-3">
+                             <h3>${item.price}</h3>
+                           </div>
+                         </div>
+                         <div onClick={()=>dispatch(removeProduct(i))} className="ms-auto text-[20px] cursor-pointer">
+                           <RxCross2/>
+                         </div>
+                       </div>
+                       
+                       </div>
+                       ))}
+                       <div className="bg-white py-4 px-5">
+                         <div className="flex flex-wrap md:flex-nowrap my-5">
+                          
+                           <button onClick={handleCartPage} className="px-[20px] md:px-[40px] py-[12px] md:py-[16px] text-[10px] md:text-[12px] font-bold border-2 border-[#000] me-3 hover:bg-black hover:text-white duration-300">
+                             View Cart
+                           </button>
+                           
+                       
+                           <button onClick={handleCheckout} className="px-[20px] md:px-[40px] py-[12px] md:py-[16px] text-[10px] md:text-[12px] font-bold border-2 border-[#000] me-3 hover:bg-black hover:text-white duration-300">
+                             Check Out
+                           </button>
+                           
+                         </div>
+                       </div>
+                     </div>
+
               )}
+</div>
+             
 
             </div>
           </div>

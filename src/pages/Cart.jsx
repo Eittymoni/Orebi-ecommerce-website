@@ -67,60 +67,96 @@ console.log(cartInfo);
           </h4>
         </div>
       </div>
-    {cartInfo.map((item, i)=>(
-<div className="my-4">
-            <div className="flex items-center py-[32px] pl-3 border">
-              <div className="w-1/4">
-                <div className="">
-                  <div className="flex justify-between items-center">
-                    <div className="w-[10%]">
-                      <button onClick={()=>handlePremove(i)}
-                        className=""
-                      
-                      >
-                        <ImCross />
-                      </button>
-                    </div>
-                    <div className="w-[25%]">
-                      <img src={item.thumbnail} alt="" className="w-full" />
-                    </div>
-                    <div className="w-[50%]">
-                      <h3 className="font-sans font-bold text-[16px] text-[#262626] ">
-                       {item.title} 
-                      </h3>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="w-1/4">
-                <h4 className="font-sans font-bold text-[16px] text-[#262626] ">
-                  ${item.price} 
-                </h4>
-              </div>
-              <div className="w-1/4">
-                <div className="inline-block border">
-                  <button className="px-5 py-1 border-none" onClick={()=>handleDecrement(i)}
+      {cartInfo.length? (
+        <>
+          {cartInfo.map((item, i)=>(
+  <div className="my-4">
+        <div className="flex items-center py-[32px] pl-3 border">
+          <div className="w-1/4">
+            <div className="">
+              <div className="flex justify-between items-center">
+                <div className="w-[10%]">
+                  <button onClick={()=>handlePremove(i)}
+                    className=""
+                  
                   >
-                    -
-                  </button>
-                  <span className="px-4">
-                    {item.qun} 
-
-                  </span>
-                  <button onClick={()=>handleIncrement(i)} className="px-5 py-1 border-none">
-                    +
+                    <ImCross />
                   </button>
                 </div>
-              </div>
-              <div className="w-1/4">
-                <h4 className="font-sans font-bold text-[16px] text-[#262626] ">
-                  ${(item.price * item.qun).toFixed(2)} 
-                </h4>
+                <div className="w-[25%]">
+                  <img src={item.thumbnail} alt="" className="w-full" />
+                </div>
+                <div className="w-[50%]">
+                  <h3 className="font-sans font-bold text-[16px] text-[#262626] ">
+                   {item.title} 
+                  </h3>
+                </div>
               </div>
             </div>
+          </div>
+          <div className="w-1/4">
+            <h4 className="font-sans font-bold text-[16px] text-[#262626] ">
+              ${item.price} 
+            </h4>
+          </div>
+          <div className="w-1/4">
+            <div className="inline-block border">
+              <button className="px-5 py-1 border-none" onClick={()=>handleDecrement(i)}
+              >
+                -
+              </button>
+              <span className="px-4">
+                {item.qun} 
+
+              </span>
+              <button onClick={()=>handleIncrement(i)} className="px-5 py-1 border-none">
+                +
+              </button>
             </div>
-    ))}
-          
+          </div>
+          <div className="w-1/4">
+            <h4 className="font-sans font-bold text-[16px] text-[#262626] ">
+              ${(item.price * item.qun).toFixed(2)} 
+            </h4>
+          </div>
+        </div>
+        </div>
+))}
+        </>
+ 
+      ):(
+        <div className="text-center min-h-[100px]">
+            <h2 className="font-sans  text-[30px] text-[#262626]">
+            There are no items in your cart.
+            </h2>
+          </div>
+      )}
+    
+    <div className="pt-[50px]">
+          <h3 className="text-right font-sans font-bold text-[20px] text-[#262626] px-3">
+            Cart totals
+          </h3>
+          <div className="flex justify-end pt-[24px]">
+            <table>
+              <tr>
+                <td className="w-[220px] h-[50px] border px-3 font-sans font-bold text-[16px] text-[#262626]">
+                  Subtotal
+                </td>
+                <td className="w-[220px] h-[50px] border px-3 font-sans font-normal text-[16px] text-[#767676]">
+                  {/* ${totalPrice.toFixed(2)} */}000
+                </td>
+              </tr>
+              <tr>
+                <td className="w-[220px] h-[50px] border px-3 font-sans font-bold text-[16px] text-[#262626]">
+                  Total
+                </td>
+                <td className="w-[220px] h-[50px] border px-3 font-sans font-normal text-[16px] text-[#262626]">
+                  {/* ${totalPrice.toFixed(2)} */}000
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>        
   
 
       </Container>
