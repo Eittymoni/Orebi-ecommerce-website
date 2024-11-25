@@ -5,11 +5,18 @@ import { IoGitCompare } from "react-icons/io5";
 import { FaCartPlus } from "react-icons/fa"
 import { ApiData } from "./ContextApi";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "./slice/ProductSlice";
 
 const Post = ({ allPage, activeGrid, categoryFilter, showPrice, brandCategory }) => {
   let { info, loading } = useContext(ApiData);
   let [filterShow, setFilterShow] = useState([]);
   let [count, setCount] = useState(true);
+
+ let dispatch = useDispatch()
+ let handleCartProduct = (item) =>{
+  dispatch(addToCart({...item, qun:1}))
+}
 
   useEffect(() => {
     let fiveFilter = categoryFilter.slice(0, 5);
@@ -49,7 +56,7 @@ const Post = ({ allPage, activeGrid, categoryFilter, showPrice, brandCategory })
           <li className="py-2">
             Compare <IoGitCompare className="inline-block" />
           </li>
-          <li className="py-2">
+          <li className="py-2 cursor-pointer" onClick={()=>handleCartProduct(item)}>
             Add to Cart <FaCartPlus className="inline-block" />
           </li>
         </ul>
@@ -94,7 +101,7 @@ const Post = ({ allPage, activeGrid, categoryFilter, showPrice, brandCategory })
                       <li className="py-2">
                         Compare <IoGitCompare className="inline-block" />
                       </li>
-                      <li className="py-2">
+                      <li className="py-2 cursor-pointer" onClick={()=>handleCartProduct(item)}>
                         Add to Cart <FaCartPlus className="inline-block" />
                       </li>
                     </ul>
@@ -157,7 +164,7 @@ const Post = ({ allPage, activeGrid, categoryFilter, showPrice, brandCategory })
                           <li className="py-2">
                             Compare <IoGitCompare className="inline-block" />
                           </li>
-                          <li className="py-2">
+                          <li className="py-2 cursor-pointer" onClick={()=>handleCartProduct(item)}>
                             Add to Cart <FaCartPlus className="inline-block" />
                           </li>
                         </ul>

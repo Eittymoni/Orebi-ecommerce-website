@@ -8,7 +8,7 @@ import { productDecrement,productIncrement,removeProduct } from '../components/s
 
 const Cart = () => {
 let cartInfo = useSelector((state)=>state.product.cartItem)
-console.log(cartInfo);
+
 
 
  
