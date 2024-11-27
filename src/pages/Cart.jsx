@@ -24,6 +24,15 @@ let cartInfo = useSelector((state)=>state.product.cartItem)
     dispatch(removeProduct(i))
   }
 
+   let {totalPrice, totalQuantity} = cartInfo.reduce((acc, item)=>{
+    acc.totalPrice += item.price * item.qun
+    acc.totalQuantity += item.qun
+
+    console.log(acc);
+    return acc
+    
+  },{totalPrice:0, totalQuantity:0})
+
   return (
     <section className="py-[55px]">
     <Container>
@@ -140,10 +149,10 @@ let cartInfo = useSelector((state)=>state.product.cartItem)
             <table>
               <tr>
                 <td className="w-[220px] h-[50px] border px-3 font-sans font-bold text-[16px] text-[#262626]">
-                  Subtotal
+                  Quantity
                 </td>
-                <td className="w-[220px] h-[50px] border px-3 font-sans font-normal text-[16px] text-[#767676]">
-                  {/* ${totalPrice.toFixed(2)} */}000
+                <td className="w-[220px] h-[50px] border px-3 font-sans font-normal text-[16px] ">
+                 { totalQuantity}
                 </td>
               </tr>
               <tr>
@@ -151,13 +160,19 @@ let cartInfo = useSelector((state)=>state.product.cartItem)
                   Total
                 </td>
                 <td className="w-[220px] h-[50px] border px-3 font-sans font-normal text-[16px] text-[#262626]">
-                  {/* ${totalPrice.toFixed(2)} */}000
+                  ${totalPrice.toFixed(2)}
                 </td>
               </tr>
             </table>
           </div>
         </div>        
-  
+   <div className="text-end  mt-4">
+        <Link to="/checkout">
+        <button className="px-[20px] md:px-[40px] py-[12px] md:py-[16px] text-[10px] md:text-[12px] font-bold border-2 border-[#000] me-3 hover:bg-black hover:text-white duration-300">
+        Proceed to Checkout
+        </button>
+        </Link>
+        </div>
 
       </Container>
     </section>
