@@ -169,7 +169,7 @@ let cartInfo = useSelector((state)=>state.product.cartItem)
    <div className="text-end  mt-4">
         <Link to="/checkout">
         <button className="px-[20px] md:px-[40px] py-[12px] md:py-[16px] text-[10px] md:text-[12px] font-bold border-2 border-[#000] me-3 hover:bg-black hover:text-white duration-300">
-        Proceed to Checkout
+         Checkout
         </button>
         </Link>
         </div>

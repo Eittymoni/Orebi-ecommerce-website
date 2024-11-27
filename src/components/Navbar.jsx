@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import Container from './Container'
 import Flex from './Flex'
 import { CgMenuLeftAlt } from "react-icons/cg";
@@ -13,12 +13,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RxCross2 } from 'react-icons/rx';
 import { useNavigate } from 'react-router-dom';
 import { removeProduct } from './slice/ProductSlice';
+import { ApiData } from "./ContextApi";
+
 
 
 
 const Navbar = () => {
   let data = useSelector ((state)=> state.product.cartItem)
-
+  let{info,loading} = useContext(ApiData)
+ 
   let dispatch = useDispatch()
   let navigate = useNavigate()
  
@@ -31,6 +34,9 @@ const Navbar = () => {
   let [isCateNav, setisCateNav] = useState(false);
   let [isAcc, setisAcc] = useState(false);
   let [card, setCard] = useState(false)
+  let [search, setSearch] = useState("")
+  let [searchFilter, setSearchFilter] = useState([])
+
   useEffect(() => {
     document.addEventListener("click", (e) => {
       if (cateRef.current.contains(e.target)) {
@@ -66,10 +72,14 @@ const Navbar = () => {
 
   let handleCheckout = ()=>{
     navigate("/checkout")
-    
-    setCard(false)
+      setCard(false)
   }
-
+  let handleChange = (e) =>{
+  setSearch(e.target.value);
+  let searchOneByOne = info.filter((item)=> item.title.toLowerCase().includes( e.target.value.toLowerCase()))
+  setSearchFilter(searchOneByOne);
+  
+  }
 
   return (
     <section className='bg-[#F5F5F3] lg:py-6 py-5  px-10'>
@@ -97,7 +107,7 @@ const Navbar = () => {
           </div>
 
           <div className=" lg:w-1/2 w-full py-4 lg:py-0 ">
-            <div className=" relative">
+            <div onChange={handleChange} className=" relative" >
               <input type="search" placeholder="Search Products..." className="w-full lg:py-[16px] py-[10px] px-[20px] outline-none border-none lg:text-[16px] md:text-[16px] text-[12px] font-normal font-sans " />
               <IoSearch className=' absolute top-[50%]  translate-y-[-50%] right-4' />
 
