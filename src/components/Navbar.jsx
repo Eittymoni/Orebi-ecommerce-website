@@ -80,7 +80,12 @@ const Navbar = () => {
   setSearchFilter(searchOneByOne);
   
   }
-
+  let handleSearchId = (id) =>{
+    navigate(`/shop/${id}`)
+    setSearchFilter([])
+    setSearch("")
+   }
+   
   return (
     <section className='bg-[#F5F5F3] lg:py-6 py-5  px-10'>
       <Container>
@@ -107,11 +112,43 @@ const Navbar = () => {
           </div>
 
           <div className=" lg:w-1/2 w-full py-4 lg:py-0 ">
-            <div onChange={handleChange} className=" relative" >
-              <input type="search" placeholder="Search Products..." className="w-full lg:py-[16px] py-[10px] px-[20px] outline-none border-none lg:text-[16px] md:text-[16px] text-[12px] font-normal font-sans " />
+            <div  className=" relative" >
+              <input type="search" onChange={handleChange} placeholder="Search Products..."  value={search} className="w-full lg:py-[16px] py-[10px] px-[20px] outline-none border-none lg:text-[16px] md:text-[16px] text-[12px] font-normal font-sans " />
               <IoSearch className=' absolute top-[50%]  translate-y-[-50%] right-4' />
 
+             
+              {searchFilter.length > 0 &&
+              <div className="absolute left-0 top-[50px] mt-2 w-[560px] h-[400px] overflow-y-scroll bg-[rgba(233,230,230,0.9)] z-[1]">
+
+              {searchFilter.map((item, i)=>(
+                       
+                       <div onClick={()=>handleSearchId(item.id)} className="flex items-center bg-white py-4 px-5 cursor-pointer">
+                         <div>
+                           <img
+                             className="w-[80px] md:w-[150px]"
+                             src={item.thumbnail}
+                             alt="Cart item"
+                           />
+                         </div>
+                         <div className="flex-grow">
+                           <div className="font-DM font-bold text-[14px] ml-3">
+                             <h3>{item.title}</h3>
+                           </div>
+                           <div className="font-DM font-bold text-[14px] ml-3">
+                             <h3>${item.price}</h3>
+                           </div>
+                         </div>
+                         <div onClick={()=>dispatch(removeProduct(i))} className="ms-auto text-[20px] cursor-pointer">
+                           <RxCross2/>
+                         </div>
+                       </div>
+                       
+                       
+                       ))}
+
             </div>
+}
+          </div>
           </div>
           <div className="lg:w-1/4 w-full">
             <div className="flex justify-end gap-x-6 relative">

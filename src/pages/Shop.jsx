@@ -82,7 +82,7 @@ const Shop = () => {
       setCategoryFilter("")
     }
   }
- console.log(handlePrice);
+ 
  
   let handleBrand = (bitem) =>{
     let brandFilter = info.filter((item)=> item.brand == bitem) 
