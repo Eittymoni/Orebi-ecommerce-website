@@ -165,7 +165,7 @@ const Checkout = () => {
                                       Subtotal
                                   </th>
                                   <td class="px-6 py-4">
-                                      {totalPrice} $
+                                  ${totalPrice} 
                                   </td>
 
                               </tr>
@@ -174,7 +174,7 @@ const Checkout = () => {
                                       Total
                                   </th>
                                   <td class="px-6 py-4">
-                                      {totalPrice} $
+                                  $ {totalPrice} 
                                   </td>
 
                               </tr>
