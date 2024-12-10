@@ -7,8 +7,18 @@ import { ApiData } from "./ContextApi";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "./slice/ProductSlice";
+import { ExclamationCircleOutlined } from '@ant-design/icons';
+import { Button, Modal, Space } from 'antd';
 
 const Post = ({ allPage, activeGrid, categoryFilter, showPrice, brandCategory }) => {
+  const [open, setOpen] = useState(false);
+  const showModal = () => {
+    setOpen(true);
+  };
+  const hideModal = () => {
+    setOpen(false);
+  };
+
   let { info, loading } = useContext(ApiData);
   let [filterShow, setFilterShow] = useState([]);
   let [count, setCount] = useState(true);
@@ -165,7 +175,9 @@ const Post = ({ allPage, activeGrid, categoryFilter, showPrice, brandCategory })
                            Compare <IoGitCompare className="inline-block" />
                          </li>
                          <li className="py-2 cursor-pointer" onClick={()=>handleCartProduct(item)}>
-                           Add to Cart <FaCartPlus className="inline-block" />
+                         <Button className="border-0" onClick={showModal}>
+                        Add to Cart <FaCartPlus className="inline-block" />
+                  </Button>
                          </li>
                        </ul>
                      </div>
@@ -187,6 +199,21 @@ const Post = ({ allPage, activeGrid, categoryFilter, showPrice, brandCategory })
                  </div>
                ))}
 
+<Modal className="text-center"
+        title="Login"
+        open={open}
+        onOk={hideModal}
+        onCancel={hideModal}
+        okText="Login"
+      >
+       <div className="">
+        <input className="py-2 border-2 border-[#262626] w-full rounded-lg px-4" type="email" placeholder="Email" />
+       </div>
+       <div className="mt-4">
+       <input className="py-2 border-2 border-[#262626] w-full rounded-lg px-4" type="password" placeholder="Password" />
+       </div>
+       <p className="text-center mt-3">Don't have an account? <Link className="text-[blue]" to="/registration">Sign up</Link></p>
+      </Modal>
 
 
              </>
